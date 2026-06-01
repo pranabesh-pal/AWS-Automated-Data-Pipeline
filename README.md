@@ -9,6 +9,7 @@ When a raw JSON file is uploaded to an S3 bucket, an S3 event triggers an AWS La
 
 ## Architecture Diagram
 
+**SS Here**
 High-level architecture of the automated AWS data pipeline.
 
 ---
@@ -38,6 +39,8 @@ The video below demonstrates the complete automated workflow:
 - Movement of source file to processed folder
 - Querying transformed data using Athena
 
+**Video Here**
+
 ---
 
 ## AWS Services Used
@@ -51,16 +54,62 @@ Purpose
 - Stores processed source files
 - Stores Athena query results
 
-S3 Bucket
-│
-├── raw/
-│   └── Incoming JSON files
-│
-├── cleaned/
-│   └── Transformed Parquet files
-│
-├── processed/
-│   └── Archived source files
-│
-└── athena_results/
-    └── Athena query outputs
+
+**SS Here**
+
+### 2. AWS Lambda
+
+Purpose
+
+- Triggered automatically when a JSON file is uploaded to the raw folder
+- Extracts the uploaded file path
+- Starts the Glue ETL job
+- Passes the file path dynamically using the '--input_file' parameter
+
+**SS Here**
+
+### 3. AWS Glue ETL
+
+Transformations Performed
+
+- Removed duplicate records
+- Applied schema mapping
+- Standardized region values
+    - N → North
+    - S → South
+    - E → East
+    - W → West
+- Converted JSON data to Parquet format
+- Archived processed source files
+
+**SS Here**
+
+### 4. AWS Glue Crawler
+
+Purpose
+
+- Scans cleaned Parquet files
+- Infers schema automatically
+- Creates metadata tables in the AWS Glue Data Catalog
+- Makes transformed data available for Athena queries
+
+**SS Here**
+
+### 5. Amazon Athena
+
+Purpose
+
+- Enables serverless SQL analysis
+- Queries transformed Parquet data directly from S3
+- Supports ad-hoc business analysis
+
+**SS Here**
+
+---
+
+## Sample Athena Analysis
+
+**SS Here**
+
+---
+
