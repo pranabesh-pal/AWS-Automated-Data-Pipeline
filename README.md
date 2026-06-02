@@ -9,8 +9,11 @@ When a raw JSON file is uploaded to an S3 bucket, an S3 event triggers an AWS La
 
 ## Architecture Diagram
 
-**SS Here**
+
+
+![Architecture Diagram](images/pipeline_architecture.png)
 High-level architecture of the automated AWS data pipeline.
+
 
 ---
 
@@ -39,7 +42,10 @@ The video below demonstrates the complete automated workflow:
 - Movement of source file to processed folder
 - Querying transformed data using Athena
 
-**Video Here**
+
+
+![Click to Watch Demo Video](video/demo.mp4)
+
 
 ---
 
@@ -55,7 +61,12 @@ Purpose
 - Stores Athena query results
 
 
-**SS Here**
+
+![S3 Bucket Preview](images/s3_bucket_preview.png)
+
+
+![S3 Bucket Structure](images/s3_bucket_structure.png)
+
 
 ### 2. AWS Lambda
 
@@ -66,7 +77,10 @@ Purpose
 - Starts the Glue ETL job
 - Passes the file path dynamically using the '--input_file' parameter
 
-**SS Here**
+
+
+![Lambda](images/lambda.png)
+
 
 ### 3. AWS Glue ETL
 
@@ -82,7 +96,10 @@ Transformations Performed
 - Converted JSON data to Parquet format
 - Archived processed source files
 
-**SS Here**
+
+
+![Glue](images/glue.png)
+
 
 ### 4. AWS Glue Crawler
 
@@ -93,7 +110,10 @@ Purpose
 - Creates metadata tables in the AWS Glue Data Catalog
 - Makes transformed data available for Athena queries
 
-**SS Here**
+
+
+![Glue Crawler](images/glue_crawler.png)
+
 
 ### 5. Amazon Athena
 
@@ -103,13 +123,29 @@ Purpose
 - Queries transformed Parquet data directly from S3
 - Supports ad-hoc business analysis
 
-**SS Here**
+
+
+![Athena](images/athena.png)
+
 
 ---
 
 ## Sample Athena Analysis
 
-**SS Here**
+### Regional Performance
+![Query 1](images/q1.png)
+![Query 1 Result](images/q1_r.png)
+
+
+### Sales Representative Performance
+![Query 2](images/q2.png)
+![Query 2 Reult](images/q2_r.png)
+
+
+### Product Category Analysis
+![Query 3](images/q3.png)
+![Query 3 Reult](images/q3_r.png)
+
 
 ---
 
