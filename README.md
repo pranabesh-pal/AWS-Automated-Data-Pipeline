@@ -44,7 +44,7 @@ The video below demonstrates the complete automated workflow:
 
 
 
-![Click to Watch Demo Video](video/demo.mp4)
+![Demo Video](video/demo(1).gif)
 
 
 ---
